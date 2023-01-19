@@ -1,37 +1,14 @@
-import React, { useState } from "react";
-import AddUser from "./components/Users/AddUser";
-import UsersList from "./components/Users/UsersList";
-import UseLocalStorage from "./hooks/use-localstorage/UseLocalStorage";
-// import Wrapper from "./components/Helpers/Wrapper";
+import React from "react";
+import {Header} from "./components/Header/Header";
+import {LoginPage} from "./components/LoginPage/LoginPage";
 
-function App() {
-  // const [userList, setUserList] = useState([]);
-  const [userList, setUserList] = UseLocalStorage("todos", [
-    { },
-  ]);
-  const [empty, setEmpty] = useState(false);
-
-  const addUserHandler = (uName, uAge) => {
-    setUserList((prevUserList) => {
-      return [
-        ...prevUserList,
-        { name: uName, age: uAge, id: Math.random().toString(), delete: false },
-      ];
-    });
-    setEmpty(true);
-  };
-
+const App = () => {
   return (
     <div>
-      <AddUser onAddUser={addUserHandler} key="add-user" />
-      <UsersList
-        users={userList}
-        setUsers={setUserList}
-        key="use-list"
-        userList={empty}
-      />
+      <Header />
+      <LoginPage/>
     </div>
   );
-}
+};
 
 export default App;
